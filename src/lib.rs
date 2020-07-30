@@ -1,6 +1,8 @@
+/// The blocklist
 pub const BLOCKLIST: [&'static str; 538] = include!("list.json");
 
-pub fn is_valid(s: &str) -> bool {
+/// Check if the word is in the blacklist, return false (validation failed), otherwise true.
+pub fn validate(s: &str) -> bool {
     !BLOCKLIST.contains(&s)
 }
 
@@ -10,11 +12,11 @@ mod tests {
 
     #[test]
     fn is_valid_return_true() {
-        assert!(is_valid("paperinik"));
+        assert!(validate("paperinik"));
     }
 
     #[test]
     fn is_valid_return_false() {
-        assert!(!is_valid("root"));
+        assert!(!validate("root"));
     }
 }
